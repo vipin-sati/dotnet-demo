@@ -1,0 +1,15 @@
+D:\dotnet-projects\vipin-sati\dotnet-demo\refridgerator-app\refridgerator-app\obj\Debug\net6.0\refridgerator-app.csproj.AssemblyReference.cache
+D:\dotnet-projects\vipin-sati\dotnet-demo\refridgerator-app\refridgerator-app\obj\Debug\net6.0\refridgerator-app.GeneratedMSBuildEditorConfig.editorconfig
+D:\dotnet-projects\vipin-sati\dotnet-demo\refridgerator-app\refridgerator-app\obj\Debug\net6.0\refridgerator-app.AssemblyInfoInputs.cache
+D:\dotnet-projects\vipin-sati\dotnet-demo\refridgerator-app\refridgerator-app\obj\Debug\net6.0\refridgerator-app.AssemblyInfo.cs
+D:\dotnet-projects\vipin-sati\dotnet-demo\refridgerator-app\refridgerator-app\obj\Debug\net6.0\refridgerator-app.csproj.CoreCompileInputs.cache
+D:\dotnet-projects\vipin-sati\dotnet-demo\refridgerator-app\refridgerator-app\bin\Debug\net6.0\refridgerator-app.exe
+D:\dotnet-projects\vipin-sati\dotnet-demo\refridgerator-app\refridgerator-app\bin\Debug\net6.0\refridgerator-app.deps.json
+D:\dotnet-projects\vipin-sati\dotnet-demo\refridgerator-app\refridgerator-app\bin\Debug\net6.0\refridgerator-app.runtimeconfig.json
+D:\dotnet-projects\vipin-sati\dotnet-demo\refridgerator-app\refridgerator-app\bin\Debug\net6.0\refridgerator-app.dll
+D:\dotnet-projects\vipin-sati\dotnet-demo\refridgerator-app\refridgerator-app\bin\Debug\net6.0\refridgerator-app.pdb
+D:\dotnet-projects\vipin-sati\dotnet-demo\refridgerator-app\refridgerator-app\obj\Debug\net6.0\refridgerator-app.dll
+D:\dotnet-projects\vipin-sati\dotnet-demo\refridgerator-app\refridgerator-app\obj\Debug\net6.0\refint\refridgerator-app.dll
+D:\dotnet-projects\vipin-sati\dotnet-demo\refridgerator-app\refridgerator-app\obj\Debug\net6.0\refridgerator-app.pdb
+D:\dotnet-projects\vipin-sati\dotnet-demo\refridgerator-app\refridgerator-app\obj\Debug\net6.0\refridgerator-app.genruntimeconfig.cache
+D:\dotnet-projects\vipin-sati\dotnet-demo\refridgerator-app\refridgerator-app\obj\Debug\net6.0\ref\refridgerator-app.dll
