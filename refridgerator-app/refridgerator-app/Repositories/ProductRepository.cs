@@ -30,9 +30,9 @@ namespace refridgerator_app.Repositories
             return products.Find(p => p.Id == id);
         }
 
-        public Product GetByName(string productName)
+        public List<Product> GetByName(string productName)
         {
-            return products.Find(p => p.Name == productName);
+            return products.Where(p => p.Name == productName && p.ExpirationDate >= DateTime.Now).OrderBy(p => p.ExpirationDate).ToList<Product>();
         }
 
         public int Insert(Product product)

@@ -2,6 +2,7 @@
 using refridgerator_app;
 using refridgerator_app.Repositories;
 using refridgerator_app.Repositories.Interfaces;
+using refridgerator_app.Models;
 
 IProductRepository productRepository = new ProductRepository();
 var app = new Refrigerator(productRepository);
@@ -17,9 +18,20 @@ app.ConsumeProduct("Sugar", 3);
 app.ShowCurrentStatus();
 
 // Stage 2: Checking expiry
-app.InsertProduct("Yogurt", 4, DateTime.Now.AddDays(3));
+app.InsertProduct("Yogurt", 4, DateTime.Now.AddDays(2));
+
+// Subscribe to the Product Expiring event
+app.ProductExpiring += App_ProductExpiring;
+
 app.CheckExpiry();
 app.ShowCurrentStatus();
 
 // Stage 3: Creating a shopping list
 app.CreateShoppingList();
+
+
+void App_ProductExpiring(object? sender, ProductEventArgs e)
+{
+    Product expiringProduct = e.ExpiringProduct;
+    Console.WriteLine($"Alert: Item {expiringProduct.Name} is about to expire!");
+}

@@ -7,6 +7,8 @@ namespace refridgerator_app
     {
         private readonly IProductRepository _productRepository;
 
+        public event EventHandler<ProductEventArgs> ProductExpiring;
+
         public Refrigerator(IProductRepository productRepository)
         {
             this._productRepository = productRepository;
@@ -26,18 +28,31 @@ namespace refridgerator_app
 
         public void ConsumeProduct(string productName, decimal quantity)
         {
-            var product = _productRepository.GetByName(productName);
-            if (product != null)
+            var products = _productRepository.GetByName(productName);
+            if (products != null)
             {
-                if (quantity <= product.Quantity)
+                if(quantity <= products.Sum(p => p.Quantity))
                 {
-                    product.Quantity -= quantity;
-                    Console.WriteLine($"Consumed {quantity} of {product.Name}.");
-                    _productRepository.Update(product);
+                    foreach (var product in products)
+                    {
+                        if (product.Quantity >= quantity)
+                        {
+                            product.Quantity -= quantity;
+                        }
+                        else
+                        {
+                            product.Quantity = 0;
+                            quantity -= product.Quantity;
+                        }
+
+                        _productRepository.Update(product);
+                    }
+
+                    Console.WriteLine($"Consumed {quantity} of {productName}.");
                 }
                 else
                 {
-                    Console.WriteLine($"Insufficient quantity of {product.Name} in the refrigerator.");
+                    Console.WriteLine($"Insufficient quantity of {productName} in the refrigerator.");
                 }
             }
             else
@@ -48,7 +63,7 @@ namespace refridgerator_app
 
         public void ShowCurrentStatus()
         {
-            var products = _productRepository.GetAll();
+            var products = _productRepository.GetAll().Where(p => p.ExpirationDate >= DateTime.Now);
             Console.WriteLine("Current Status:");
             foreach (var product in products)
             {
@@ -59,12 +74,19 @@ namespace refridgerator_app
         public void CheckExpiry()
         {
             var products = _productRepository.GetAll();
+            TimeSpan remainingTime;
             foreach (var product in products)
             {
+                remainingTime = product.ExpirationDate.Date - DateTime.Today;
+
                 if (product.ExpirationDate.Date < DateTime.Today)
                 {
                     Console.WriteLine($"Remove {product.Name} from the refrigerator. It has expired.");
                     _productRepository.Delete(product.Id);
+                }
+                else if (remainingTime.TotalDays <= 3) // Change the threshold as per your requirement
+                {
+                    OnProductExpiring(new ProductEventArgs(product));
                 }
             }
         }
@@ -87,6 +109,10 @@ namespace refridgerator_app
             {
                 Console.WriteLine(product.Name);
             }
+        }
+        protected virtual void OnProductExpiring(ProductEventArgs e)
+        {
+            ProductExpiring?.Invoke(this, e);
         }
     }
 }

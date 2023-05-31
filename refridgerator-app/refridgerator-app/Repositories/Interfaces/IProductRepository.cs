@@ -6,7 +6,7 @@ namespace refridgerator_app.Repositories.Interfaces
     {
         List<Product> GetAll();
         Product GetById(int id);
-        Product GetByName(string productName);
+        List<Product> GetByName(string productName);
         int Insert(Product product);
         void Update(Product product);
         void Delete(int id);
